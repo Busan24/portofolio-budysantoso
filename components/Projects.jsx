@@ -9,18 +9,18 @@ const projects = [
   {
     id: 1,
     category: "Mobile App",
-    title: "Ahuse",
+    title: "Foody",
     description:
-        "Ahuse is a mobile application that provides users with an intuitive platform to find comfortable homes quickly and easily. Designed with user satisfaction in mind, Ahuse leverages modern technologies to simplify the home search process. Whether you're looking to rent or buy, Ahuse makes it seamless.",
+        "Foody is a smart mobile application powered by AI that helps users monitor their daily nutrition and maintain healthy eating habits. Designed especially for teenagers and health-conscious individuals, Foody offers personalized meal recommendations, nutrition tracking, and practical tools to support a healthier lifestyle. With a user-friendly interface and intelligent features, Foody makes it easy to stay on top of your health goals every day.",
     image: "/assets/foody_app.png",
     tools: [
         { name: "Android", logo: "/assets/logo/android-logo.png" },
         { name: "Java", logo: "/assets/logo/java-logo.png" },
     ],
     features: [
-        "Effortless home search",
-        "User-friendly and responsive interface",
-        "Secure and multiple payment options",
+        "AI-based personal meal recommendations",
+        "Daily food intake and nutrition tracking",
+        "BMI calculator and health summaries",
     ],
   },
   {
