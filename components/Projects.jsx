@@ -6,8 +6,27 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
-  {
+   {
     id: 1,
+    category: "Mobile App",
+    title: "Seraya",
+    description:
+        "Seraya is an Android app designed to help adolescents and young adults manage their mental health independently. It features AI-based mood tracking, personalized activity suggestions, and an anonymous community space for emotional expression. Developed using Java and Firebase, Seraya offers a supportive, user-centered experience that promotes emotional well-being and reduces stigma through accessible digital tools.",
+    image: "/assets/Seraya.png",
+    tools: [
+        { name: "Android", logo: "/assets/logo/android-logo.png" },
+        { name: "Java", logo: "/assets/logo/java-logo.png" },
+        { name: "Firebase", logo: "/assets/logo/firebase-logo.png" },
+    ],
+    features: [
+        "Mood tracking with AI-powered insights",
+        "CBT-based self-reflection",
+        "Private emotional journaling",
+        "Anonymous community support",
+    ],
+  },
+  {
+    id: 2,
     category: "Mobile App",
     title: "Foody",
     description:
@@ -24,7 +43,7 @@ const projects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     category: "UI/UX Design",
     title: "MaxinClouth",
     description: "MaxinClouth is a mobile e-commerce application design that offers a wide variety of clothing options. The app includes categories such as T-shirts, hoodies, and shirts, providing a seamless and user-friendly shopping experience.",
@@ -35,7 +54,7 @@ const projects = [
     features: ["E-Commerce"],
   },
   {
-    id: 3,
+    id: 4,
     category: "Mobile App",
     title: "PETIKU",
     description: "Petiku is an innovative and engaging solution designed to revolutionize learning. The application offers an interactive learning platform equipped with features like augmented reality (AR) and quizzes to enhance user engagement. Leveraging advanced tools such as Unity, Vuforia, and Blender, Petiku delivers immersive 3D AR experiences that make learning both fun and effective.",
@@ -48,7 +67,7 @@ const projects = [
     features: ["Augmented Reality (AR)", "Quiz Game"],
   },
   {
-    id: 4,
+    id: 5,
     category: "UI/UX Design",
     title: "WatchGang",
     description: "WatchGang is a modern Video on Demand (VOD) platform offering an engaging and seamless user experience. Designed with user-centric principles, the application features an intuitive interface that simplifies content discovery, interactive viewing, and personalized entertainment. This design combines simplicity, personalization, and connection to deliver a truly immersive experience.",
@@ -59,7 +78,7 @@ const projects = [
     features: ["Streaming", "People Nearby", "Playlist", "Profile"],
   },
   {
-    id: 5,
+    id: 6,
     category: "UI/UX Design",
     title: "Traspoter",
     description: "Transporter is a web-based platform with a mobile interface designed to simplify waste classification through automation and advanced technology. By utilizing Convolutional Neural Networks (CNN), the application ensures high accuracy in identifying and categorizing waste types. The user-friendly web interface enhances accessibility, enabling efficient and effective waste management for users.",

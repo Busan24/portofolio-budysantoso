@@ -3,8 +3,16 @@
 import Image from "next/image";
 
 const achievements = [
-  {
+   {
     id: 1,
+    image: "/assets/award-3.jpeg",
+    title: "3rd Winner of Android Programming Competition",
+    subtitle: "By Universitas Tarumanagara - 2025",
+    description:
+      "Participated in the Android Programming Competition organized by Universitas Tarumanagara. Developed Seraya, a mental health companion app for adolescents and young adults. The app features AI-based mood tracking, personalized wellness recommendations, and an anonymous community space. Built using Java and Firebase, Seraya provides an empathetic and accessible solution for emotional well-being through a reflective and data-driven.",
+  },
+  {
+    id: 2,
     image: "/assets/award-1.jpg",
     title: "1st Winner of Mobile UI/UX Competition",
     subtitle: "By Universitas Atma Jaya Yogyakarta - 2024",
@@ -12,7 +20,7 @@ const achievements = [
       "Participated in a Mobile UI/UX Competition organized by Universitas Atma Jaya Yogyakarta. Designed the UI/UX for WatchGang, a Video on Demand (VOD) platform offering unique features such as interactive watch parties, social networking based on location, personalized playlists, and offline viewing. The app enhanced user engagement by creating a highly interactive and localized streaming experience.",
   },
   {
-    id: 2,
+    id: 3,
     image: "/assets/award-2.jpg",
     title: "1st Winner of Short Video Graphic Design",
     subtitle: "By Universitas Islam Kalimantan Muhammad Arsyad Al Banjari - 2024",
