@@ -88,11 +88,85 @@ const projects = [
     ],
     features: ["Scan Waste Classification", "Garbage Bank", "Trash Category"],
   },
+  {
+    id: 10,
+    category: "Website",
+    title: "Bakkar Fried Chicken",
+    description: "This project involved revamping the website of Bakkar Fried Chicken, a culinary brand specializing in grilled and smokey chicken, by implementing a modern, responsive design using Laravel, Tailwind CSS, and MySQL. Key features include a user-friendly interface, admin content management with CRUD operations, and integration with delivery services like WhatsApp, GoFood, and ShopeeFood. The development focused on enhancing digital presence and customer experience through seamless navigation, real-time updates, and secure data handling.",
+    image: "/assets/bakkar-banner.png",
+    tools: [
+      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
+      { name: "PHP", logo: "/assets/logo/php-logo.png" },
+      { name: "TailwindCSS", logo: "/assets/logo/tailwind-logo.png" },
+      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
+      { name: "MySql", logo: "/assets/logo/mysql-logo.png" },
+    ],
+    features: ["Company Profile and Product Highlights", "Admin Dashboard with CRUD for Menu and Content Management", "Integration with Delivery Services (WhatsApp, GoFood, ShopeeFood)"],
+  },
+    {
+    id: 8,
+    category: "Website",
+    title: "GorTour",
+    description: "GorTour is a dynamic tourism and culinary website for Bogor, developed using the Laravel framework on a Ubuntu Server with Apache Web Server. The project adopts an MVC architecture and utilizes Blade templating for efficient front-end rendering. It integrates MongoDB Atlas (NoSQL) for scalable cloud-based database management via custom REST API endpoints built without third-party packages, ensuring full control over data flow and system behavior. Apache is configured for secure and optimized performance using SSL/TLS encryption, multi-processing modules, and content delivery tuning. The site was developed and deployed on DOM Cloud VPS hosting, with SSH access for secure deployment workflows. Development followed structured UML modeling, including ERD and Use Case diagrams, and the system was tested on a VirtualBox-based Ubuntu environment. This architecture allows for future scalability, responsive user experiences, and robust admin content management for tourism information, galleries, and culinary recommendations.",
+    image: "/assets/gotour-banner.png",
+    tools: [
+      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
+      { name: "PHP", logo: "/assets/logo/php-logo.png" },
+      { name: "BootStrap", logo: "/assets/logo/bootstrap-logo.png" },
+      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
+      { name: "MongoDB", logo: "/assets/logo/mongo-logo.png" },
+    ],
+    features: ["List of Tourist Destinations in Bogor", "Bogor Culinary List", "Gallery", "Popular Tourism and Culinary Recommendations"],
+  },
+   {
+    id: 9,
+    category: "Website",
+    title: "Tukuniku",
+    description: "Tukuniku is a web-based application developed to support a local grilled meat SME in Bogor by improving visibility and operational efficiency through geolocation technology. Built using modern web technologies and the Leaflet Routing Machine library, the platform integrates Geographic Information Systems (GIS) to help users find the shortest route from their current location to the Tukuniku store. It also provides valuable customer location data to support marketing and business expansion strategies. The system combines interactive map-based search with e-commerce capabilities and adopts Agile development methodology to ensure continuous improvement and adaptability based on user feedback.",
+    image: "/assets/tukuniku-banner.png",
+    tools: [
+      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
+      { name: "PHP", logo: "/assets/logo/php-logo.png" },
+      { name: "BootStrap", logo: "/assets/logo/bootstrap-logo.png" },
+      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
+      { name: "MySql", logo: "/assets/logo/mysql-logo.png" },
+    ],
+    features: ["Company Profile and Product Highlights", "Interactive Route Finder with Geolocation (GIS Integration)", "Online Ordering and Transaction System", "Secure Payment Gateway Integration"],
+  },
+  {
+    id: 7,
+    category: "Website",
+    title: "Babeh Burger (Bager)",
+    description: "Babeh Burger (Bager) is a web application built using Java Spring Boot, designed to help new students at the vocational campus of IPB University easily find nearby food spots with accurate information. The project applies core Object-Oriented Programming (OOP) principles such as classes, objects, encapsulation, and access modifiers. The backend is developed with Java Spring Boot and implements full CRUD functionality, while data is managed using a PostgreSQL database. The user interface is created using HTML, CSS, and JavaScript, and development was carried out in the JetBrains IntelliJ IDEA environment.",
+    image: "/assets/bager.png",
+    tools: [
+      { name: "SpringBoot", logo: "/assets/logo/spring-boot-logo.png" },
+      { name: "HTML", logo: "/assets/logo/html-logo.png" },
+      { name: "CSS", logo: "/assets/logo/css-logo.png" },
+      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
+      { name: "PostgreSql", logo: "/assets/logo/postgresql-logo.png" },
+    ],
+    features: ["Location and Navigation Integration", "Menu Details and Prices", "Automated Order Processing via WhatsApp Integration"],
+  },
+  {
+    id: 11,
+    category: "Website",
+    title: "Style Logram",
+    description: "Style Logram is a fashion image classification web application that utilizes Convolutional Neural Networks (CNN) trained on DeepFashion and Fashion Product Images datasets. Built using Python (Flask), TensorFlow, and OpenCV for image processing and model inference, the system classifies clothing items into multiple categories. The frontend is developed with Next.js and styled using Tailwind CSS, ensuring responsive UI/UX. This project integrates AI accuracy with seamless web deployment for fashion-related applications.",
+    image: "/assets/stylogram.png",
+    tools: [
+      { name: "NextJs", logo: "/assets/logo/nextjs-logo.png" },
+      { name: "Python", logo: "/assets/logo/python-logo.png" },
+      { name: "TailwindCSS", logo: "/assets/logo/tailwind-logo.png" },
+      { name: "TensorFlow", logo: "/assets/logo/tensorflow-logo.png" },
+    ],
+    features: ["Real-Time Fashion Image Classification using CNN"],
+  },
   
 ];
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("Mobile App");
+  const [activeCategory, setActiveCategory] = useState("Website");
   const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = projects.filter(
@@ -113,14 +187,14 @@ const Projects = () => {
     <section id="project" className="container mx-auto pt-16 pb-8">
       <h2 className="text-3xl font-bold text-left mb-4">Projects Portfolio</h2>
       <p className="text-left text-white/80 mb-8">
-        Explore my portfolio showcasing innovative projects in Mobile App and
+        Explore my portfolio showcasing innovative projects in Website, Mobile App and
         UI/UX Design. Each project reflects my dedication to blending creativity
         and functionality.
       </p>
 
       {/* Categories */}
       <div className="flex gap-6 mb-12">
-        {["Mobile App", "UI/UX Design"].map((category) => (
+        {["Website","Mobile App", "UI/UX Design"].map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}

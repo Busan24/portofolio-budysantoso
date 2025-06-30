@@ -6,17 +6,17 @@ import { Description } from "@radix-ui/react-dialog";
 import { motion } from "framer-motion"
 
 const services = [
-    {
-      num: "01",
-      title: "Frontend Mobile Developer",
-      description: "Creating responsive, high-performance mobile applications using modern frameworks. Skilled in building seamless user interfaces and ensuring cross-platform compatibility.",
-      href: "", // Tambahkan link jika diperlukan
-    },
+  {
+    num: "01",
+    title: "Webs Developer",
+    description: "Designing and developing dynamic, user-friendly web applications using modern frameworks like Laravel. Experienced in building responsive interfaces, and integrating APIs",
+    href: "", 
+  },
     {
       num: "02",
-      title: "UI/UX Design",
-      description: "Designing intuitive and visually appealing user interfaces with a focus on user-centric experiences. Expertise in designing, prototyping, and usability testing.",
-      href: "", // Tambahkan link jika diperlukan
+      title: "Frontend Mobile Developer",
+      description: "Creating responsive, high-performance mobile applications using modern frameworks. Skilled in building seamless user interfaces and ensuring cross-platform compatibility.",
+      href: "", 
     },
   ];
   

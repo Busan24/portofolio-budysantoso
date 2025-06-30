@@ -6,10 +6,7 @@ const About = () => {
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-4">About Me</h2>
         <p className="text-base leading-relaxed text-white/80">
-        A Junior Software Engineering Technology student at IPB University, eager to embrace challenges that foster self-growth and development. 
-        Ability to organise and prioritise and effectively balance multiple priorities, also work under pressure and meet strategic deadlines. 
-        Passionate about technology, design, and business, with strong analytical and programming abilities. Proficient in UI/UX Design, 
-        HTML, CSS, JavaScript, PHP, Java, Python, Kotlin, Dart, and XML.
+        I am a Software Engineering Technology student at IPB University with a strong passion for web and mobile application development. Experienced in using Java, PHP, JavaScript, Python, Dart, and frameworks such as Laravel, and Flutter, I am eager to apply my skills in real-world projects that support digital transformation. I thrive in collaborative environments, have a solid understanding of database systems like PostgreSQL and MySQL.
         </p>
       </div>
     </section>

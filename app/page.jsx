@@ -20,14 +20,10 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl text-accent">Hello, I'm Budy Santoso</span>
             <h1 className="h3 mt-2">
-              Frontend Mobile Developer
-              <br /> and UI/UX Design
+              Software Engineering
             </h1>
             <p className="max-w-[600px] mb-4 mt-4 text-white/80 leading-normal">
-              As a Frontend Mobile Developer and UI/UX Designer, I strive to
-              blend creativity with technical expertise to build seamless and
-              engaging user experiences. Let's bring ideas to life <br />
-              with intuitive interfaces and innovative code.
+              As a Software Engineering enthusiast, I have been actively involved in developing both web-based and mobile applications through various academic and independent projects.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8 mt-6">
               <a

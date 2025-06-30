@@ -8,7 +8,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Budy Santoso. All rights reserved.
           </p>
           <p className="text-sm mt-1">
-            Built with me Budy Santoso | Frontend Mobile Developer and UI/UX Designer
+            Built with me Budy Santoso | Software Engineering
           </p>
         </div>
       </footer>
