@@ -1,24 +1,34 @@
+"use client";
+
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 import Header from "@/components/Header";
+
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"], // pastikan ini adalah subset yang valid
+  subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable: '--font-jetbrainsMono'
 });
 
-export const metadata = {
-  title: "Budy Santoso",
-  description: "Portfolio Budy Santoso",
-};
-
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  
+  // Semua route admin tidak menampilkan Header portfolio
+  const isAdminRoute = pathname?.startsWith("/admin");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <html lang="en">
-      <body className={jetbrainsMono.variable}>
-        <Header/>
+    <html lang="en" suppressHydrationWarning>
+      <body className={jetbrainsMono.variable} suppressHydrationWarning>
+        {/* Header hanya untuk visitor/portfolio public, tidak untuk admin */}
+        {mounted && !isAdminRoute && <Header />}
         {children}
       </body>
     </html>

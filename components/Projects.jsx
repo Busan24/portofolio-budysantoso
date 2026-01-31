@@ -1,178 +1,44 @@
 "use client";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-
-const projects = [
-   {
-    id: 1,
-    category: "Mobile App",
-    title: "Seraya",
-    description:
-        "Seraya is an Android app designed to help adolescents and young adults manage their mental health independently. It features AI-based mood tracking, personalized activity suggestions, and an anonymous community space for emotional expression. Developed using Java and Firebase, Seraya offers a supportive, user-centered experience that promotes emotional well-being and reduces stigma through accessible digital tools.",
-    image: "/assets/Seraya.png",
-    tools: [
-        { name: "Android", logo: "/assets/logo/android-logo.png" },
-        { name: "Java", logo: "/assets/logo/java-logo.png" },
-        { name: "Firebase", logo: "/assets/logo/firebase-logo.png" },
-    ],
-    features: [
-        "Mood tracking with AI-powered insights",
-        "CBT-based self-reflection",
-        "Private emotional journaling",
-        "Anonymous community support",
-    ],
-  },
-  {
-    id: 2,
-    category: "Mobile App",
-    title: "Foody",
-    description:
-        "Foody is a smart mobile application powered by AI that helps users monitor their daily nutrition and maintain healthy eating habits. Designed especially for teenagers and health-conscious individuals, Foody offers personalized meal recommendations, nutrition tracking, and practical tools to support a healthier lifestyle. With a user-friendly interface and intelligent features, Foody makes it easy to stay on top of your health goals every day.",
-    image: "/assets/foody_app.png",
-    tools: [
-        { name: "Android", logo: "/assets/logo/android-logo.png" },
-        { name: "Java", logo: "/assets/logo/java-logo.png" },
-    ],
-    features: [
-        "AI-based personal meal recommendations",
-        "Daily food intake and nutrition tracking",
-        "BMI calculator and health summaries",
-    ],
-  },
-  {
-    id: 3,
-    category: "UI/UX Design",
-    title: "MaxinClouth",
-    description: "MaxinClouth is a mobile e-commerce application design that offers a wide variety of clothing options. The app includes categories such as T-shirts, hoodies, and shirts, providing a seamless and user-friendly shopping experience.",
-    image: "/assets/maxinclouth-banner.png",
-    tools: [
-      { name: "Figma", logo: "/assets/logo/figma-logo.png" },
-    ],
-    features: ["E-Commerce"],
-  },
-  {
-    id: 4,
-    category: "Mobile App",
-    title: "PETIKU",
-    description: "Petiku is an innovative and engaging solution designed to revolutionize learning. The application offers an interactive learning platform equipped with features like augmented reality (AR) and quizzes to enhance user engagement. Leveraging advanced tools such as Unity, Vuforia, and Blender, Petiku delivers immersive 3D AR experiences that make learning both fun and effective.",
-    image: "/assets/petiku-banner.png",
-    tools: [
-      { name: "Unity", logo: "/assets/logo/unity-logo.png" },
-      { name: "Fuvoria", logo: "/assets/logo/fuvoria-logo.png" },
-      { name: "Blender", logo: "/assets/logo/blender-logo.png" },
-    ],
-    features: ["Augmented Reality (AR)", "Quiz Game"],
-  },
-  {
-    id: 5,
-    category: "UI/UX Design",
-    title: "WatchGang",
-    description: "WatchGang is a modern Video on Demand (VOD) platform offering an engaging and seamless user experience. Designed with user-centric principles, the application features an intuitive interface that simplifies content discovery, interactive viewing, and personalized entertainment. This design combines simplicity, personalization, and connection to deliver a truly immersive experience.",
-    image: "/assets/wg-banner.png",
-    tools: [
-      { name: "Figma", logo: "/assets/logo/figma-logo.png" },
-    ],
-    features: ["Streaming", "People Nearby", "Playlist", "Profile"],
-  },
-  {
-    id: 6,
-    category: "UI/UX Design",
-    title: "Traspoter",
-    description: "Transporter is a web-based platform with a mobile interface designed to simplify waste classification through automation and advanced technology. By utilizing Convolutional Neural Networks (CNN), the application ensures high accuracy in identifying and categorizing waste types. The user-friendly web interface enhances accessibility, enabling efficient and effective waste management for users.",
-    image: "/assets/traspoter-banner.png",
-    tools: [
-      { name: "Figma", logo: "/assets/logo/figma-logo.png" },
-    ],
-    features: ["Scan Waste Classification", "Garbage Bank", "Trash Category"],
-  },
-  {
-    id: 10,
-    category: "Website",
-    title: "Bakkar Fried Chicken",
-    description: "This project involved revamping the website of Bakkar Fried Chicken, a culinary brand specializing in grilled and smokey chicken, by implementing a modern, responsive design using Laravel, Tailwind CSS, and MySQL. Key features include a user-friendly interface, admin content management with CRUD operations, and integration with delivery services like WhatsApp, GoFood, and ShopeeFood. The development focused on enhancing digital presence and customer experience through seamless navigation, real-time updates, and secure data handling.",
-    image: "/assets/bakkar-banner.png",
-    tools: [
-      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
-      { name: "PHP", logo: "/assets/logo/php-logo.png" },
-      { name: "TailwindCSS", logo: "/assets/logo/tailwind-logo.png" },
-      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
-      { name: "MySql", logo: "/assets/logo/mysql-logo.png" },
-    ],
-    features: ["Company Profile and Product Highlights", "Admin Dashboard with CRUD for Menu and Content Management", "Integration with Delivery Services (WhatsApp, GoFood, ShopeeFood)"],
-  },
-    {
-    id: 8,
-    category: "Website",
-    title: "GorTour",
-    description: "GorTour is a dynamic tourism and culinary website for Bogor, developed using the Laravel framework on a Ubuntu Server with Apache Web Server. The project adopts an MVC architecture and utilizes Blade templating for efficient front-end rendering. It integrates MongoDB Atlas (NoSQL) for scalable cloud-based database management via custom REST API endpoints built without third-party packages, ensuring full control over data flow and system behavior. Apache is configured for secure and optimized performance using SSL/TLS encryption, multi-processing modules, and content delivery tuning. The site was developed and deployed on DOM Cloud VPS hosting, with SSH access for secure deployment workflows. Development followed structured UML modeling, including ERD and Use Case diagrams, and the system was tested on a VirtualBox-based Ubuntu environment. This architecture allows for future scalability, responsive user experiences, and robust admin content management for tourism information, galleries, and culinary recommendations.",
-    image: "/assets/gotour-banner.png",
-    tools: [
-      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
-      { name: "PHP", logo: "/assets/logo/php-logo.png" },
-      { name: "BootStrap", logo: "/assets/logo/bootstrap-logo.png" },
-      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
-      { name: "MongoDB", logo: "/assets/logo/mongo-logo.png" },
-    ],
-    features: ["List of Tourist Destinations in Bogor", "Bogor Culinary List", "Gallery", "Popular Tourism and Culinary Recommendations"],
-  },
-   {
-    id: 9,
-    category: "Website",
-    title: "Tukuniku",
-    description: "Tukuniku is a web-based application developed to support a local grilled meat SME in Bogor by improving visibility and operational efficiency through geolocation technology. Built using modern web technologies and the Leaflet Routing Machine library, the platform integrates Geographic Information Systems (GIS) to help users find the shortest route from their current location to the Tukuniku store. It also provides valuable customer location data to support marketing and business expansion strategies. The system combines interactive map-based search with e-commerce capabilities and adopts Agile development methodology to ensure continuous improvement and adaptability based on user feedback.",
-    image: "/assets/tukuniku-banner.png",
-    tools: [
-      { name: "Laravel", logo: "/assets/logo/laravel-logo.png" },
-      { name: "PHP", logo: "/assets/logo/php-logo.png" },
-      { name: "BootStrap", logo: "/assets/logo/bootstrap-logo.png" },
-      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
-      { name: "MySql", logo: "/assets/logo/mysql-logo.png" },
-    ],
-    features: ["Company Profile and Product Highlights", "Interactive Route Finder with Geolocation (GIS Integration)", "Online Ordering and Transaction System", "Secure Payment Gateway Integration"],
-  },
-  {
-    id: 7,
-    category: "Website",
-    title: "Babeh Burger (Bager)",
-    description: "Babeh Burger (Bager) is a web application built using Java Spring Boot, designed to help new students at the vocational campus of IPB University easily find nearby food spots with accurate information. The project applies core Object-Oriented Programming (OOP) principles such as classes, objects, encapsulation, and access modifiers. The backend is developed with Java Spring Boot and implements full CRUD functionality, while data is managed using a PostgreSQL database. The user interface is created using HTML, CSS, and JavaScript, and development was carried out in the JetBrains IntelliJ IDEA environment.",
-    image: "/assets/bager.png",
-    tools: [
-      { name: "SpringBoot", logo: "/assets/logo/spring-boot-logo.png" },
-      { name: "HTML", logo: "/assets/logo/html-logo.png" },
-      { name: "CSS", logo: "/assets/logo/css-logo.png" },
-      { name: "JavaScript", logo: "/assets/logo/javascript-logo.png" },
-      { name: "PostgreSql", logo: "/assets/logo/postgresql-logo.png" },
-    ],
-    features: ["Location and Navigation Integration", "Menu Details and Prices", "Automated Order Processing via WhatsApp Integration"],
-  },
-  {
-    id: 11,
-    category: "Website",
-    title: "Style Logram",
-    description: "Style Logram is a fashion image classification web application that utilizes Convolutional Neural Networks (CNN) trained on DeepFashion and Fashion Product Images datasets. Built using Python (Flask), TensorFlow, and OpenCV for image processing and model inference, the system classifies clothing items into multiple categories. The frontend is developed with Next.js and styled using Tailwind CSS, ensuring responsive UI/UX. This project integrates AI accuracy with seamless web deployment for fashion-related applications.",
-    image: "/assets/stylogram.png",
-    tools: [
-      { name: "NextJs", logo: "/assets/logo/nextjs-logo.png" },
-      { name: "Python", logo: "/assets/logo/python-logo.png" },
-      { name: "TailwindCSS", logo: "/assets/logo/tailwind-logo.png" },
-      { name: "TensorFlow", logo: "/assets/logo/tensorflow-logo.png" },
-    ],
-    features: ["Real-Time Fashion Image Classification using CNN"],
-  },
-  
-];
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { getOptimizedImageUrl } from "@/lib/cloudinary";
+import { FiExternalLink, FiFolder, FiTag, FiCheck, FiX } from "react-icons/fi";
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("Website");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const filteredProjects = projects.filter(
-    (project) => project.category === activeCategory
-  );
+  // Fetch projects from Firestore
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(q);
+        
+        const projectsData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        
+        setProjects(projectsData);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchProjects();
+  }, []);
+
+  // Handle body scroll when modal is open
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
@@ -180,6 +46,14 @@ const Projects = () => {
       document.body.style.overflow = "auto";
     }
   }, [selectedProject]);
+
+  // Filter projects by category
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter(project => project.category === activeCategory);
+
+  // Get unique categories
+  const categories = ["All", ...new Set(projects.map(p => p.category))];
 
   const closePopup = () => setSelectedProject(null);
 
@@ -192,139 +66,258 @@ const Projects = () => {
         and functionality.
       </p>
 
-      {/* Categories */}
-      <div className="flex gap-6 mb-12">
-        {["Website","Mobile App", "UI/UX Design"].map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`relative text-lg font-semibold px-4 py-2 ${
-              activeCategory === category
-                ? "text-white border-b-2 border-accent w-fit"
-                : "text-white/80 hover:text-white"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Projects */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="group relative bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300 hover:scale-105"
-          >
-            <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={500}
-              height={300}
-              className="w-full max-h-64 object-contain transition-transform duration-300"
-              />
-
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-              <Button
-                onClick={() => setSelectedProject(project)}
-                className="mb-4 text-white bg-accent px-4 py-2 rounded-md hover:bg-accent-dark"
+      {loading ? (
+        <div className="text-center py-20">
+          <div className="inline-block w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+          <p className="text-white/60 mt-4">Loading projects...</p>
+        </div>
+      ) : (
+        <>
+          {/* Categories */}
+          <div className="flex gap-6 mb-12 overflow-x-auto">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`relative text-lg font-semibold px-4 py-2 whitespace-nowrap ${
+                  activeCategory === category
+                    ? "text-white border-b-2 border-accent"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
-                View Details
-              </Button>
-              <div className="flex gap-2">
-                {project.tools.map((tool, index) => (
-                  <Image
-                    key={index}
-                    src={tool.logo}
-                    alt={tool.name}
-                    width={30}
-                    height={30}
-                    className="rounded-full"
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="p-4 z-30 relative">
-              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <p className="text-sm text-white/80 description-project">
-                {project.description}
-              </p>
-            </div>
+                {category}
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Dialog Pop-Up with Animation */}
+          {filteredProjects.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-white/60">No projects found in this category.</p>
+            </div>
+          ) : (
+            <>
+              {/* Projects Grid - Modern Card Design */}
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ staggerChildren: 0.1 }}
+              >
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group relative bg-[#27272c] rounded-2xl overflow-hidden border border-white/5 hover:border-accent/30 transition-all duration-500 cursor-pointer"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    {/* Category Badge - Only show when "All" is selected */}
+                    {activeCategory === "All" && (
+                      <div className="absolute top-4 left-4 z-30">
+                        <span className="px-3 py-1 bg-accent/20 backdrop-blur-md text-accent text-xs font-semibold rounded-full border border-accent/30">
+                          {project.category}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Image Container with Gradient Overlay */}
+                    <div className="relative h-56 overflow-hidden">
+                      <Image
+                        src={project.imagePublicId ? getOptimizedImageUrl(project.imagePublicId, 500, 300) : "/assets/placeholder.png"}
+                        alt={project.title}
+                        width={500}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#27272c] via-[#27272c]/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                      
+                      {/* Hover Overlay with Glassmorphism */}
+                      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                        <div className="text-center space-y-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex flex-col items-center justify-center">
+                          <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold px-6 py-2 rounded-lg flex items-center gap-2">
+                            <FiExternalLink size={18} />
+                            View Project
+                          </Button>
+                          
+                          {/* Tech Stack Icons on Hover */}
+                          {project.tools && project.tools.length > 0 && (
+                            <div className="flex gap-2 justify-center flex-wrap px-4 max-w-[320px]">
+                              {project.tools.slice(0, 6).map((tool, idx) => {
+                                const toolLogo = typeof tool === 'string' ? null : tool.logo;
+                                const toolName = typeof tool === 'string' ? tool : tool.name;
+                                
+                                return (
+                                  <div 
+                                    key={idx} 
+                                    className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20 hover:border-accent/50 hover:bg-white/20 transition-all duration-200"
+                                    title={toolName}
+                                  >
+                                    {toolLogo ? (
+                                      <img
+                                        src={toolLogo}
+                                        alt={toolName || 'Tech'}
+                                        className="w-6 h-6 object-contain"
+                                        onError={(e) => {
+                                          e.target.style.display = 'none';
+                                        }}
+                                      />
+                                    ) : (
+                                      <span className="text-white text-xs font-bold">
+                                        {toolName?.substring(0, 2).toUpperCase() || "?"}
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="p-6 space-y-3">
+                      <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors duration-300 line-clamp-1">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-white/60 line-clamp-2 leading-relaxed">
+                        {project.description}
+                      </p>
+                      
+                      {/* Footer with Icon */}
+                      <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                        <span className="text-xs text-white/40 flex items-center gap-2">
+                          <FiFolder size={14} />
+                          Project Details
+                        </span>
+                        <FiExternalLink size={16} className="text-white/40 group-hover:text-accent transition-colors duration-300" />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </>
+          )}
+        </>
+      )}
+
+      {/* Enhanced Dialog Modal - Responsive & Scrollable */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8"
             onClick={closePopup}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-gray-800 p-4 sm:p-6 rounded-lg relative max-w-lg w-[95%] max-h-[80vh] overflow-y-auto md:w-3/4"
+              className="bg-[#1a1a1f] rounded-2xl relative w-full max-w-5xl max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, type: "spring" }}
             >
-              {/* Tombol Close */}
+              {/* Close Button - Fixed Position */}
               <button
-                    onClick={closePopup}
-                    className="absolute top-4 right-5 text-white text-2xl p-2 bg-transparent"
-                    aria-label="Close"
-                    style={{
-                        textShadow: "0 0 1px black, 0 0 2px black, 0 0 3px black",
-                    }}
-                    >
-                    &times;
-                </button>
+                onClick={closePopup}
+                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/80 hover:bg-black/90 rounded-full transition-colors border border-white/20 hover:border-accent/50 backdrop-blur-md shadow-lg"
+                aria-label="Close"
+              >
+                <FiX size={20} className="text-white" />
+              </button>
 
-              {/* Gambar Zoom */}
-              <div className="overflow-hidden mb-4">
+              {/* Full Width Image - Responsive Height, Scrollable */}
+              <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[450px] rounded-t-2xl overflow-hidden">
                 <Image
-                  src={selectedProject.image}
+                  src={selectedProject.imagePublicId ? getOptimizedImageUrl(selectedProject.imagePublicId, 1200, 800) : "/assets/placeholder.png"}
                   alt={selectedProject.title}
-                  width={500}
-                  height={300}
-                  className="w-full max-h-64 object-contain transition-transform duration-300"
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover"
                 />
+                
+                {/* Category Badge on Image */}
+                <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent backdrop-blur-md text-primary text-xs sm:text-sm font-bold rounded-full flex items-center gap-2 shadow-lg">
+                    <FiTag size={12} className="sm:w-[14px] sm:h-[14px]" />
+                    {selectedProject.category}
+                  </span>
+                </div>
               </div>
 
-              {/* Detail */}
-              <h3 className="text-2xl font-bold text-white mb-2">
-                {selectedProject.title}
-              </h3>
-              <p className="text-white/80 mb-4">{selectedProject.description}</p>
+              {/* Content Section - Scrolls with Image */}
+              <div className="p-6 sm:p-8 lg:p-10 space-y-6">
+                {/* Title and Description */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                    {selectedProject.title}
+                  </h3>
+                  <p className="text-white/70 leading-relaxed text-sm sm:text-base">
+                    {selectedProject.description}
+                  </p>
+                </div>
 
-              {/* Fitur */}
-              <h4 className="text-xl font-semibold text-white mb-2">Features:</h4>
-              <ul className="list-disc list-inside text-white/80 mb-4">
-                {selectedProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
+                {/* Features Section */}
+                {selectedProject.features && selectedProject.features.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 pb-2 border-b border-accent/20">
+                      <FiCheck className="text-accent" size={20} />
+                      <h4 className="text-lg sm:text-xl font-semibold text-white">Key Features</h4>
+                    </div>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {selectedProject.features.map((feature, index) => (
+                        <li 
+                          key={index} 
+                          className="flex items-start gap-3 text-white/70 bg-white/5 p-3 rounded-lg border border-white/5 hover:border-accent/20 transition-colors"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {/* Tools */}
-              <div className="flex gap-4">
-                {selectedProject.tools.map((tool, index) => (
-                  <Image
-                    key={index}
-                    src={tool.logo}
-                    alt={tool.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                ))}
+                {/* Technologies Section */}
+                {selectedProject.tools && selectedProject.tools.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 pb-2 border-b border-accent/20">
+                      <FiFolder className="text-accent" size={20} />
+                      <h4 className="text-lg sm:text-xl font-semibold text-white">Technologies Used</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {selectedProject.tools.map((tool, index) => {
+                        const toolLogo = typeof tool === 'string' ? null : tool.logo;
+                        const toolName = typeof tool === 'string' ? tool : tool.name;
+                        
+                        return (
+                          <div 
+                            key={index} 
+                            className="group/tool relative px-4 py-2.5 bg-[#27272c] hover:bg-[#2d2d32] rounded-xl border border-white/5 hover:border-accent/30 transition-all duration-300 flex items-center gap-3"
+                          >
+                            {toolLogo && (
+                              <img
+                                src={toolLogo}
+                                alt={toolName || 'Tech'}
+                                className="w-5 h-5 object-contain"
+                                onError={(e) => {
+                                  e.target.style.display = 'none';
+                                }}
+                              />
+                            )}
+                            <span className="text-sm font-medium text-white/90 group-hover/tool:text-white">
+                              {toolName || tool}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
