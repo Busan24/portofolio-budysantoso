@@ -36,7 +36,7 @@ import {
 } from "firebase/firestore";
 
 // Cloudinary imports (FREE image hosting!)
-import { uploadToCloudinary, deleteFromCloudinary } from "@/lib/cloudinary";
+import { uploadToCloudinary, deleteFromCloudinary, getOptimizedImageUrl } from "@/lib/cloudinary";
 
 // Categories for projects
 const categories = ["Website", "Mobile App", "UI/UX Design"];
@@ -400,7 +400,7 @@ export default function ProjectsPage() {
                             {/* Image */}
                             <div className="relative h-40 bg-primary">
                                 <Image
-                                    src={project.image || "/assets/placeholder.png"}
+                                    src={project.imagePublicId ? getOptimizedImageUrl(project.imagePublicId, 500, 300) : "/assets/placeholder.png"}
                                     alt={project.title}
                                     fill
                                     className="object-contain"

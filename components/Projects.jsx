@@ -52,8 +52,16 @@ const Projects = () => {
     ? projects
     : projects.filter(project => project.category === activeCategory);
 
-  // Get unique categories
-  const categories = ["All", ...new Set(projects.map(p => p.category))];
+  // Get unique categories and sort them by specific order
+  const categories = ["All", ...[...new Set(projects.map(p => p.category))].sort((a, b) => {
+    const order = ["Website", "Mobile App", "UI/UX Design"];
+    const indexA = order.indexOf(a);
+    const indexB = order.indexOf(b);
+    // Assign high index to items not in the list to put them at the end
+    const valA = indexA === -1 ? 999 : indexA;
+    const valB = indexB === -1 ? 999 : indexB;
+    return valA - valB;
+  })];
 
   const closePopup = () => setSelectedProject(null);
 
@@ -115,20 +123,24 @@ const Projects = () => {
                     {/* Category Badge - Only show when "All" is selected */}
                     {activeCategory === "All" && (
                       <div className="absolute top-4 left-4 z-30">
-                        <span className="px-3 py-1 bg-accent/20 backdrop-blur-md text-accent text-xs font-semibold rounded-full border border-accent/30">
+                        <span className="px-3 py-1 bg-accent backdrop-blur-md text-primary text-xs font-bold rounded-full border border-accent shadow-lg">
                           {project.category}
                         </span>
                       </div>
                     )}
 
                     {/* Image Container with Gradient Overlay */}
-                    <div className="relative h-56 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden bg-[#1c1c21]">
                       <Image
                         src={project.imagePublicId ? getOptimizedImageUrl(project.imagePublicId, 500, 300) : "/assets/placeholder.png"}
                         alt={project.title}
                         width={500}
                         height={300}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.src = '/assets/placeholder.png';
+                        }}
+                        loading="lazy"
                       />
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#27272c] via-[#27272c]/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
@@ -214,7 +226,7 @@ const Projects = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-[#1a1a1f] rounded-2xl relative w-full max-w-5xl max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl"
+              className="bg-[#1a1a1f] rounded-2xl relative w-full max-w-6xl max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl custom-scrollbar"
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -230,27 +242,27 @@ const Projects = () => {
                 <FiX size={20} className="text-white" />
               </button>
 
-              {/* Full Width Image - Responsive Height, Scrollable */}
-              <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[450px] rounded-t-2xl overflow-hidden">
-                <Image
-                  src={selectedProject.imagePublicId ? getOptimizedImageUrl(selectedProject.imagePublicId, 1200, 800) : "/assets/placeholder.png"}
-                  alt={selectedProject.title}
-                  width={1200}
-                  height={800}
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Category Badge on Image */}
-                <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
-                  <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent backdrop-blur-md text-primary text-xs sm:text-sm font-bold rounded-full flex items-center gap-2 shadow-lg">
-                    <FiTag size={12} className="sm:w-[14px] sm:h-[14px]" />
-                    {selectedProject.category}
-                  </span>
+              {/* Image Container - Full View without Crop */}
+              <div className="relative w-full bg-gradient-to-b from-[#1c1c21] to-[#1a1a1f] p-6 sm:p-8 lg:p-10">
+                <div className="relative w-full max-w-4xl mx-auto bg-[#0d0d0f] rounded-xl overflow-hidden shadow-2xl border border-white/5">
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <Image
+                      src={selectedProject.imagePublicId ? getOptimizedImageUrl(selectedProject.imagePublicId, 1600, 900) : "/assets/placeholder.png"}
+                      alt={selectedProject.title}
+                      fill
+                      className="object-contain"
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                      onError={(e) => {
+                        e.target.src = '/assets/placeholder.png';
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Content Section - Scrolls with Image */}
-              <div className="p-6 sm:p-8 lg:p-10 space-y-6">
+              {/* Content Section - Clean Layout */}
+              <div className="px-6 sm:px-8 lg:px-10 pb-8 space-y-6">
                 {/* Title and Description */}
                 <div className="space-y-3">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">
