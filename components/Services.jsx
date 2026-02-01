@@ -36,16 +36,16 @@ const Services = () => {
   return (
     <section id="services" className="flex flex-col justify-center pt-16 pb-8">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-6">Services</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Services</h2>
         
         {loading ? (
           <div className="text-center py-20">
             <div className="inline-block w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
-            <p className="text-white/60 mt-4">Loading services...</p>
+            <p className="text-gray-500 dark:text-white/60 mt-4">Loading services...</p>
           </div>
         ) : services.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-white/60">No services available yet.</p>
+            <p className="text-gray-500 dark:text-white/60">No services available yet.</p>
           </div>
         ) : (
           <motion.div 
@@ -63,16 +63,16 @@ const Services = () => {
                     </div>
                     <Link 
                       href={service.href || "#"} 
-                      className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                      className="w-[70px] h-[70px] rounded-full bg-gray-200 dark:bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                     >
                       <BsArrowUpRight className="text-primary text-3xl"/>
                     </Link>
                   </div>
-                  <h3 className="text-[32px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
+                  <h3 className="text-[32px] font-bold leading-none text-gray-900 dark:text-white group-hover:text-accent transition-all duration-500">
                     {service.title}
                   </h3>
-                  <p className="text-white/60">{service.description}</p>
-                  <div className="border-b border-white/20 w-full"></div>
+                  <p className="text-gray-600 dark:text-white/60">{service.description}</p>
+                  <div className="border-b border-gray-300 dark:border-white/20 w-full"></div>
                 </div>
               );
             })}

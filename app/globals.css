@@ -4,8 +4,14 @@
 
 @layer base {
   body {
-    @apply font-primary bg-primary text-white leading-loose;
+    @apply font-primary bg-gray-50 text-gray-900 leading-loose transition-colors duration-300;
   }
+
+  /* Dark Mode Styles */
+  .dark body {
+    @apply bg-primary text-white;
+  }
+
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
@@ -35,6 +41,10 @@
   }
 
   .text-outline {
+    -webkit-text-stroke: 1px #1a1a1a;
+  }
+  
+  .dark .text-outline {
     -webkit-text-stroke: 1px #ffffff;
   }
   
@@ -50,13 +60,13 @@
     text-overflow: ellipsis;
   }
 
-  /* Custom Scrollbar for Modal */
+  /* Custom Scrollbar for Modal - Light Mode (Default) */
   .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #1a1a1f;
+    background: #f1f3f5;
     border-radius: 10px;
   }
 
@@ -69,7 +79,14 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #0284b8 0%, #03b5fc 100%);
   }
-  
 
+  /* Custom Scrollbar for Modal - Dark Mode */
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1a1a1f;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #03b5fc 0%, #0284b8 100%);
+  }
 }
 

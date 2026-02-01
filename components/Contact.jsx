@@ -240,15 +240,15 @@ const Contact = () => {
 
   return (
     <section id="contact" className="container mx-auto pt-16 pb-8" suppressHydrationWarning>
-      <h2 className="text-3xl font-bold text-left mb-4">Contact</h2>
-      <p className="text-left text-white/80 mb-8">
+      <h2 className="text-3xl font-bold text-left mb-4 text-white light:text-gray-900">Contact</h2>
+      <p className="text-left text-white/80 light:text-gray-600 mb-8">
         Let's shape the future together. Hire me as your Frontend Mobile Developer and UI/UX Designer to create impactful, user-centered digital experiences today!
       </p>
       <div className="mx-auto" suppressHydrationWarning>
         <div className="flex flex-col xl:flex-row gap-[30px]" suppressHydrationWarning>
           {/* Form Section */}
           <div className="xl:w-[54%] order-2 xl:order-none" suppressHydrationWarning>
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl" onSubmit={handleSubmit} suppressHydrationWarning>
+            <form className="flex flex-col gap-6 p-10 bg-white dark:bg-[#27272c] rounded-xl border border-gray-200 dark:border-transparent shadow-lg" onSubmit={handleSubmit} suppressHydrationWarning>
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6" suppressHydrationWarning>
                 <div>
@@ -321,19 +321,19 @@ const Contact = () => {
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0" suppressHydrationWarning>
             {loading ? (
               <div className="flex flex-col gap-10 w-full">
-                <div className="h-16 bg-white/10 rounded animate-pulse" />
-                <div className="h-16 bg-white/10 rounded animate-pulse" />
+                <div className="h-16 bg-gray-200 dark:bg-white/10 rounded animate-pulse" />
+                <div className="h-16 bg-gray-200 dark:bg-white/10 rounded animate-pulse" />
               </div>
             ) : (
               <ul className="flex flex-col gap-10">
                 {contactInfo.map((item, index) => (
                   <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-gray-100 dark:bg-[#27272c] text-accent rounded-md flex items-center justify-center">
                       <div className="text-[28px]">{item.Icon}</div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
+                      <p className="text-gray-500 dark:text-white/60">{item.title}</p>
+                      <h3 className="text-xl text-gray-900 dark:text-white">{item.description}</h3>
                     </div>
                   </li>
                 ))}

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import Header from "@/components/Header";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -27,9 +28,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={jetbrainsMono.variable} suppressHydrationWarning>
-        {/* Header hanya untuk visitor/portfolio public, tidak untuk admin */}
-        {mounted && !isAdminRoute && <Header />}
-        {children}
+        <ThemeProvider>
+          {/* Header hanya untuk visitor/portfolio public, tidak untuk admin */}
+          {mounted && !isAdminRoute && <Header />}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

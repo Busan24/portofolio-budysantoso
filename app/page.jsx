@@ -111,14 +111,14 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             {loading ? (
               <div className="space-y-3">
-                <div className="h-6 w-48 bg-white/10 rounded animate-pulse" />
-                <div className="h-10 w-64 bg-white/10 rounded animate-pulse" />
-                <div className="h-24 w-full max-w-[600px] bg-white/10 rounded animate-pulse" />
+                <div className="h-6 w-48 bg-gray-200 dark:bg-white/10 rounded animate-pulse" />
+                <div className="h-10 w-64 bg-gray-200 dark:bg-white/10 rounded animate-pulse" />
+                <div className="h-24 w-full max-w-[600px] bg-gray-200 dark:bg-white/10 rounded animate-pulse" />
               </div>
             ) : (
               <>
                 <span className="text-xl text-accent">Hello, I'm {heroData.name}</span>
-                <h1 className="h3 mt-2 min-h-[60px] flex items-center">
+                <h1 className="h3 mt-2 min-h-[60px] flex items-center text-gray-900 dark:text-white">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={currentRoleIndex}
@@ -134,7 +134,7 @@ const Home = () => {
                     </motion.span>
                   </AnimatePresence>
                 </h1>
-                <p className="max-w-[600px] mb-4 mt-4 text-white/80 leading-normal">
+                <p className="max-w-[600px] mb-4 mt-4 text-gray-600 dark:text-white/80 leading-normal">
                   {heroData.description}
                 </p>
               </>

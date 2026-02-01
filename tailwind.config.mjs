@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ["class"],
+    darkMode: "class", // Using class-based dark mode
     content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,6 +27,13 @@ export default {
 			accent: {
 				DEFAULT: "#03b5fc",
 				hover: "#00a6e8",
+			},
+			light: {
+				bg: "#f8f9fa",
+				card: "#ffffff",
+				text: "#1a1a1a",
+				muted: "#6c757d",
+				border: "#dee2e6",
 			}
   		},
   	}

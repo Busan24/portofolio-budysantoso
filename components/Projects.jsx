@@ -67,8 +67,8 @@ const Projects = () => {
 
   return (
     <section id="project" className="container mx-auto pt-16 pb-8">
-      <h2 className="text-3xl font-bold text-left mb-4">Projects Portfolio</h2>
-      <p className="text-left text-white/80 mb-8">
+      <h2 className="text-3xl font-bold text-left mb-4 text-gray-900 dark:text-white">Projects Portfolio</h2>
+      <p className="text-left text-gray-600 dark:text-white/80 mb-8">
         Explore my portfolio showcasing innovative projects in Website, Mobile App and
         UI/UX Design. Each project reflects my dedication to blending creativity
         and functionality.
@@ -77,7 +77,7 @@ const Projects = () => {
       {loading ? (
         <div className="text-center py-20">
           <div className="inline-block w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
-          <p className="text-white/60 mt-4">Loading projects...</p>
+          <p className="text-gray-500 dark:text-white/60 mt-4">Loading projects...</p>
         </div>
       ) : (
         <>
@@ -89,8 +89,8 @@ const Projects = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`relative text-lg font-semibold px-4 py-2 whitespace-nowrap ${
                   activeCategory === category
-                    ? "text-white border-b-2 border-accent"
-                    : "text-white/80 hover:text-white"
+                    ? "text-accent border-b-2 border-accent"
+                    : "text-gray-600 dark:text-white/80 hover:text-accent border-b-2 border-transparent"
                 }`}
               >
                 {category}
@@ -100,7 +100,7 @@ const Projects = () => {
 
           {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-white/60">No projects found in this category.</p>
+              <p className="text-gray-500 dark:text-white/60">No projects found in this category.</p>
             </div>
           ) : (
             <>
@@ -117,7 +117,7 @@ const Projects = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="group relative bg-[#27272c] rounded-2xl overflow-hidden border border-white/5 hover:border-accent/30 transition-all duration-500 cursor-pointer"
+                    className="group relative bg-white dark:bg-[#27272c] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-all duration-500 cursor-pointer"
                     onClick={() => setSelectedProject(project)}
                   >
                     {/* Category Badge - Only show when "All" is selected */}
@@ -191,16 +191,16 @@ const Projects = () => {
 
                     {/* Content Section */}
                     <div className="p-6 space-y-3">
-                      <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors duration-300 line-clamp-1">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent transition-colors duration-300 line-clamp-1">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-white/60 line-clamp-2 leading-relaxed">
+                      <p className="text-sm text-gray-600 dark:text-white/60 line-clamp-2 leading-relaxed">
                         {project.description}
                       </p>
                       
                       {/* Footer with Icon */}
-                      <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                        <span className="text-xs text-white/40 flex items-center gap-2">
+                      <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-white/5">
+                        <span className="text-xs text-gray-500 dark:text-white/40 flex items-center gap-2">
                           <FiFolder size={14} />
                           Project Details
                         </span>
@@ -226,7 +226,7 @@ const Projects = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-[#1a1a1f] rounded-2xl relative w-full max-w-6xl max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl custom-scrollbar"
+              className="bg-white dark:bg-[#1a1a1f] rounded-2xl relative w-full max-w-6xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-white/10 shadow-2xl custom-scrollbar"
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -236,15 +236,15 @@ const Projects = () => {
               {/* Close Button - Fixed Position */}
               <button
                 onClick={closePopup}
-                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/80 hover:bg-black/90 rounded-full transition-colors border border-white/20 hover:border-accent/50 backdrop-blur-md shadow-lg"
+                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-white dark:bg-black/80 hover:bg-gray-100 dark:hover:bg-black/90 rounded-full transition-colors border border-gray-300 dark:border-white/20 hover:border-accent/50 backdrop-blur-md shadow-lg"
                 aria-label="Close"
               >
-                <FiX size={20} className="text-white" />
+                <FiX size={20} className="text-gray-900 dark:text-white" />
               </button>
 
               {/* Image Container - Full View without Crop */}
-              <div className="relative w-full bg-gradient-to-b from-[#1c1c21] to-[#1a1a1f] p-6 sm:p-8 lg:p-10">
-                <div className="relative w-full max-w-4xl mx-auto bg-[#0d0d0f] rounded-xl overflow-hidden shadow-2xl border border-white/5">
+              <div className="relative w-full bg-gradient-to-b from-gray-50 dark:from-[#1c1c21] to-white dark:to-[#1a1a1f] p-6 sm:p-8 lg:p-10">
+                <div className="relative w-full max-w-4xl mx-auto bg-gray-100 dark:bg-[#0d0d0f] rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-white/5">
                   <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                     <Image
                       src={selectedProject.imagePublicId ? getOptimizedImageUrl(selectedProject.imagePublicId, 1600, 900) : "/assets/placeholder.png"}
@@ -265,10 +265,10 @@ const Projects = () => {
               <div className="px-6 sm:px-8 lg:px-10 pb-8 space-y-6">
                 {/* Title and Description */}
                 <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                     {selectedProject.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed text-sm sm:text-base">
+                  <p className="text-gray-600 dark:text-white/70 leading-relaxed text-sm sm:text-base">
                     {selectedProject.description}
                   </p>
                 </div>
@@ -278,13 +278,13 @@ const Projects = () => {
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 pb-2 border-b border-accent/20">
                       <FiCheck className="text-accent" size={20} />
-                      <h4 className="text-lg sm:text-xl font-semibold text-white">Key Features</h4>
+                      <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Key Features</h4>
                     </div>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {selectedProject.features.map((feature, index) => (
                         <li 
                           key={index} 
-                          className="flex items-start gap-3 text-white/70 bg-white/5 p-3 rounded-lg border border-white/5 hover:border-accent/20 transition-colors"
+                          className="flex items-start gap-3 text-gray-700 dark:text-white/70 bg-gray-50 dark:bg-white/5 p-3 rounded-lg border border-gray-200 dark:border-white/5 hover:border-accent/20 transition-colors"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
                           <span className="text-sm">{feature}</span>
@@ -299,7 +299,7 @@ const Projects = () => {
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 pb-2 border-b border-accent/20">
                       <FiFolder className="text-accent" size={20} />
-                      <h4 className="text-lg sm:text-xl font-semibold text-white">Technologies Used</h4>
+                      <h4 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Technologies Used</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
                       {selectedProject.tools.map((tool, index) => {
@@ -309,7 +309,7 @@ const Projects = () => {
                         return (
                           <div 
                             key={index} 
-                            className="group/tool relative px-4 py-2.5 bg-[#27272c] hover:bg-[#2d2d32] rounded-xl border border-white/5 hover:border-accent/30 transition-all duration-300 flex items-center gap-3"
+                            className="group/tool relative px-4 py-2.5 bg-gray-100 dark:bg-[#27272c] hover:bg-gray-200 dark:hover:bg-[#2d2d32] rounded-xl border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-all duration-300 flex items-center gap-3"
                           >
                             {toolLogo && (
                               <img
@@ -321,7 +321,7 @@ const Projects = () => {
                                 }}
                               />
                             )}
-                            <span className="text-sm font-medium text-white/90 group-hover/tool:text-white">
+                            <span className="text-sm font-medium text-gray-900 dark:text-white/90 group-hover/tool:text-gray-900 dark:group-hover/tool:text-white">
                               {toolName || tool}
                             </span>
                           </div>

@@ -31,35 +31,34 @@ const Experimen = () => {
   }, []);
 
   return (
-    <section id="experimen" className="py-8 bg-primary text-white">
+    <section id="experimen" className="py-8 bg-white dark:bg-primary text-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8">Experience</h2>
+        <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Experience</h2>
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2].map((i) => (
-              <div key={i} className="bg-gray-800 p-6 rounded-lg animate-pulse">
-                <div className="h-4 w-32 bg-white/10 rounded mb-3" />
-                <div className="h-6 w-48 bg-white/10 rounded mb-2" />
-                <div className="h-4 w-40 bg-white/10 rounded" />
+              <div key={i} className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg animate-pulse">
+                <div className="h-4 w-32 bg-gray-300 dark:bg-white/10 rounded mb-3" />
+                <div className="h-6 w-48 bg-gray-300 dark:bg-white/10 rounded mb-2" />
+                <div className="h-4 w-40 bg-gray-300 dark:bg-white/10 rounded" />
               </div>
             ))}
           </div>
         ) : experiences.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-white/60 text-lg">No experiences available yet</p>
+            <p className="text-gray-500 dark:text-white/60 text-lg">No experiences available yet</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {experiences.map((exp) => (
               <div
                 key={exp.id}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg text-white/90 hover:shadow-accent/20 hover:shadow-xl transition-shadow duration-300"
-              >
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-transparent text-gray-900 dark:text-white/90 hover:shadow-accent/20 hover:shadow-xl transition-shadow duration-300">
                 <p className="text-sm text-accent mb-2">
                   {exp.startDate} - {exp.endDate}
                 </p>
-                <h3 className="text-xl font-semibold mb-1">{exp.title}</h3>
-                <p className="text-sm text-white/70 flex items-start gap-1">
+                <h3 className="text-xl font-semibold mb-1 text-gray-900 dark:text-white">{exp.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-white/70 flex items-start gap-1">
                   <span className="text-white/50">•</span>
                   {exp.company}, {exp.location}
                 </p>
