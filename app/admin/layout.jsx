@@ -10,22 +10,23 @@ export default function AdminLayout({ children }) {
     const pathname = usePathname();
     const isLoginPage = pathname === "/admin/login";
 
-    // Login page is completely isolated - no sidebar, no header, no wrapper
+    // Login page doesn't need protection
     if (isLoginPage) {
         return (
             <AuthProvider>
                 <ToastProvider />
-                <div className="w-full h-full">
+                <div className="w-full h-full bg-primary">
                     {children}
                 </div>
             </AuthProvider>
         );
     }
 
+    // All other admin pages are protected
     return (
         <AuthProvider>
+            <ToastProvider />
             <ProtectedRoute>
-                <ToastProvider />
                 <div className="min-h-screen bg-primary flex">
                     {/* Sidebar */}
                     <AdminSidebar />

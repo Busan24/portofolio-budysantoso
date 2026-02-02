@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -16,8 +16,16 @@ export default function LoginPage() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { signIn } = useAuth();
+    const { signIn, user, loading: authLoading } = useAuth();
     const router = useRouter();
+
+    // Redirect if already logged in
+    useEffect(() => {
+        if (!authLoading && user) {
+            console.log("User already logged in, redirecting to dashboard...");
+            router.replace("/admin/dashboard");
+        }
+    }, [user, authLoading, router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,13 +41,38 @@ export default function LoginPage() {
         const result = await signIn(email, password);
 
         if (result.success) {
-            router.push("/admin/dashboard");
+            console.log("Login successful, redirecting to dashboard...");
+            router.replace("/admin/dashboard");
         } else {
             setError(result.error);
         }
 
         setLoading(false);
     };
+
+    // Show loading if checking auth
+    if (authLoading) {
+        return (
+            <div className="min-h-screen bg-primary flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+                    <p className="text-white/70">Loading...</p>
+                </div>
+            </div>
+        );
+    }
+
+    // Don't show login form if already authenticated
+    if (user) {
+        return (
+            <div className="min-h-screen bg-primary flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+                    <p className="text-white/70">Redirecting to dashboard...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-primary via-primary to-[#1a1a1f] flex items-center justify-center p-4 relative overflow-hidden">

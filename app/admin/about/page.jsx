@@ -100,7 +100,7 @@ export default function AboutPage() {
                                         value={formData.bioText}
                                         onChange={(e) => setFormData(prev => ({ ...prev, bioText: e.target.value }))}
                                         placeholder="Tell visitors about yourself..."
-                                        className="bg-white/5 border-white/10 min-h-[200px]"
+                                        className="bg-white/5 border-white/10 text-white min-h-[200px]"
                                         required
                                     />
                                     <p className="text-xs text-white/40 mt-2">

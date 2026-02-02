@@ -62,7 +62,7 @@ const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center items-center">
-        <CiMenuFries className="text-[32px]" />
+        <CiMenuFries className="text-[32px] text-gray-900 dark:text-white" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <DialogTitle className="sr-only">Mobile Navigation</DialogTitle>
@@ -72,7 +72,7 @@ const MobileNav = () => {
             <button
               key={index}
               onClick={() => handleScroll(link.path)}
-              className={`capitalize text-xl font-medium hover:text-accent transition-all text-left inline-block ${
+              className={`capitalize text-xl font-medium hover:text-accent transition-all text-left inline-block text-gray-900 dark:text-white ${
                 activeSection === link.path
                   ? "text-accent border-b-2 border-accent w-fit"
                   : "w-fit"
