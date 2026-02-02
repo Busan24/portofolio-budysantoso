@@ -6,6 +6,9 @@ import ProtectedRoute from "@/components/admin/ProtectedRoute";
 import { ToastProvider } from "@/components/ui/toast";
 import { usePathname } from "next/navigation";
 
+// Force dynamic rendering for all admin pages (no SSG/prerendering)
+export const dynamic = 'force-dynamic';
+
 export default function AdminLayout({ children }) {
     const pathname = usePathname();
     const isLoginPage = pathname === "/admin/login";
